@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.1 - map</title>
+</head>
+
+<body>
+<div id="map">
+	<h4>2.2 - map(遍历)</h4>
+    <p>语法: _.map(list, iterator, [context])</p>
+    <p>别名: collect</p>
+    <p>关键词：<em>遍历、搜集、返回</em>。</p>
+    
+    
+    <h6>a) - 用map遍历数组</h6>
+    <div class="editor" style="height:190px;">
+var list = [11, 22, 33];
+var arr = _.map(list, function (d, index) {
+    return d * 3;
+});
+console.log(arr); //产生的新数组，赋值给arr
+console.log(list); //原来的数组没有改变
+//=>
+// [33, 66, 99]
+// [11, 22, 33]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/8DRMU/</a></div>
+<p>_.map()的用法_.each()的方类似，_.map()方法会产生一个新数组，然后把的每个值映射到这个新数组中，最后返回这个新数组。原来的数组值不会被改变。</p>
+
+
+
+<h6>b) - 用map遍历对象</h6>
+<div class="editor" style="height:260px;">
+var list = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+var arr = _.map(list, function (v, k) {
+    return v * 3;
+});
+console.log(arr); //产生的新数组，赋值给arr
+console.log(list); //原来的对象没有改变
+//=>
+// [33, 66, 99]
+//  Object {a=1, b=2, c=3}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/92RJz/</a></div>
+<p>即使是遍历对象，_.map()方法依然返回了一个数组，原来的对象同样也没有被改变。</p>
+
+
+<h6>c) - map里的this</h6>
+<div class="editor" style="height:230px;">
+_.map([11, 22], function () {
+    //原来this指向全局Window
+    console.log(this);
+});
+
+_.map({
+    a: 1,
+    b: 2
+}, function () {
+    //原来this指向全局Window
+    console.log(this);
+});
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/H8h8t/</a></div>
+<p>在默认情况下。_.map()方法的this指向了全局。了解了这一点，接下就方便学习他的第三个参数[context]</p>
+
+
+<h6>d) - context参数说明</h6>
+<div class="editor" style="height:320px;">
+var obj = {
+    a: 'blue',
+    b: 'red',
+    c: 'black'
+};
+
+var arr = _.map(['a', 'b'], function (d) {
+    console.log(this); //此时的this指向了obj
+    return this[d];
+}, obj);
+
+console.log(arr); //始终返回数组
+
+//=>
+// Object {a="blue", b="red", c="black"}
+// Object {a="blue", b="red", c="black"}
+//  ["blue", "red"]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/TFe89/</a></div>
+<p>简单的来说，当传入了context，那么回调方法里的this指向就被改变了。</p>
+
+
+<h6>e) - iterator参数说明</h6>
+<div class="editor" style="height:250px;">
+var arr = _.map([1, 2, 3], function (d, index, list) {
+    console.log(d, index, list); 
+    return d * d;
+});
+
+console.log(arr);
+
+//=>
+//1 0 [1, 2, 3]
+//2 1 [1, 2, 3]
+//3 2 [1, 2, 3]
+//[1, 4, 9]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/8MLpY/</a></div>
+<p>iterator的参数是(value, key, list)。 第一个参数是值，第二个参数是序号(键名)，第三个参数是list本身。</p>
+<p>类库是那么惊人的相似，请查阅jquery的$.map()方法<a href="http://api.jquery.com/jQuery.map/" target="_blank">http://api.jquery.com/jQuery.map/</a>还有Kissy的map <a href="http://docs.kissyui.com/1.4/docs/html/api/lang/map.html" target="_blank">http://docs.kissyui.com/1.4/docs/html/api/lang/map.html</a>另外，还有一些问题留给同学们自己去探索。</p>
+<ol>
+	<li>_.map()有返回值，那么_.each()有返回值吗？</li>
+    <li>_.each()能完成的事，_.map()能完成吗？</li> 
+    <li>_.each()和_.map()的list参数是不是可以传入字符串呢？</li> 
+</ol>
+
+
+</div>
+</body>
+</html>

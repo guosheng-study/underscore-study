@@ -9,166 +9,57 @@
 <title>ACE in Action</title>
 <style type="text/css">
 body{margin:0; padding:8px;}
+ol{ font-size:14px; line-height:1.8;}
 p{ font-size:14px; line-height:1.8; text-indent:2em;}
 h1,h2{ margin:0; padding:0; text-align:center;padding:10px;}
 h3{ padding:10px; text-align:center; border-bottom:1px solid #ccc;}
 h4{ background:#efefef; padding:10px;}
-h6{ border-bottom:dashed 1px #ccc; padding:10px; margin:0 0 10px 0;}
+h6{ border-bottom:dashed 1px #ccc; padding:10px; margin:0 0 10px 0; font-size:14px;}
 em{ font-size:14px; font-weight:700; color:red; font-style:normal;}
-.editor { border-radius:10px;}
+.editor { border-radius:10px; overflow:hidden;}
 .jsfiddle-link{ padding:10px; font-size:12px; text-align:right; font-family:"Courier New", Courier, monospace}
 </style>
 </head>
 <body>
-<h1>
-Underscore学习指南
-</h1>
+<h1>Underscore学习指南</h1>
 <h2>——jQuery、Backbone的好搭档JavaScript实用库</h2>
 
-<h3>前言</h3>
-<p>随机生成1000个0到999之间的不重复的数字，你是否可以在60秒之内把代码写出来呢？你会说只有大神才可以办到吧！事实上只要学了Underscore.js，我们都可以办的到。</p>
-<p>那么展示一下你可能好奇的代码吧！</p>
-<div class="editor" style="height:88px;">
-function func(n){
-    return _.shuffle(_.range(n));
-}
-console.log(func(1000));
-</div>
-<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/R4pJt/</a></div>
-<p>看到短短几行代码，就解决了看似一个有点小复杂的问题。此时我已经深深的认同：“多学习一点知识，就可以少写一行代码。”</p>
+<div class="floor" data-html="0/0_foreword.html"></div>
+<div class="floor" data-html="0/0_directory.html"></div>
 
-
-<div class="mulu">
-<h3>目录</h3>
-<h4>集合函数(Collections)</h4>
-<ul>
-      <li>2.1 - <a href="#each">each</a></li>
-      <li>2.2 - <a href="#map">map</a></li>
-      <li>2.3 - <a href="#reduce">reduce</a></li>
-      <li>2.4 - <a href="#reduceRight">reduceRight</a></li>
-      <li>2.5 - <a href="#find">find</a></li>
-      <li>2.6 - <a href="#filter">filter</a></li>
-      <li>2.7 - <a href="#where">where</a></li>
-      <li>2.8 - <a href="#findWhere">findWhere</a></li>
-      <li>2.9 - <a href="#reject">reject</a></li>
-      <li>2.10 - <a href="#every">every</a></li>
-      <li>2.11 - <a href="#some">some</a></li>
-      <li>2.12 - <a href="#contains">contains</a></li>
-      <li>2.13 - <a href="#invoke">invoke</a></li>
-      <li>2.14 - <a href="#pluck">pluck</a></li>
-      <li>2.15 - <a href="#max">max</a></li>
-      <li>2.16 - <a href="#min">min</a></li>
-      <li>2.17 - <a href="#sortBy">sortBy</a></li>
-      <li>2.18 - <a href="#groupBy">groupBy</a></li>
-      <li>2.19 - <a href="#indexBy">indexBy</a></li>
-      <li>2.20 - <a href="#countBy">countBy</a></li>
-      <li>2.21 - <a href="#shuffle">shuffle</a></li>
-      <li>2.22 - <a href="#sample">sample</a></li>
-      <li>2.23 - <a href="#toArray">toArray</a></li>
-      <li>2.24 - <a href="#size">size</a></li>
-    </ul>
-</div>
 
 <h3>第二章、集合函数(Collections)</h3>
-<p>集合函数可以用来操作数组或对象，熟练的掌握这些方法，可以大大提高我们的产生力。</p>
-
-<div id="each">
-	<h4>2.1 - each(循环)</h4>
-    <p>语法: _.each(list, iterator, [context])</p>
-    <p>别名: forEach</p>
-    <p>为了方便记忆，给each加一个关键词：<em>循环</em>。</p>
-    <h6>a) - 用each循环数组</h6>
-    <div class="editor" style="height:190px;">
-//_.each()方法可以用来循环数组.
-
-_.each([11, 22, 33], function (d, index) {
-    //val返回的是值，index返回的index
-    console.log([d, index]); 
-});
-
-//=>
-//[11, 0]
-//[22, 1]
-//[22, 2]
-</div>
-<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/5aa4Y/</a></div>
-<h6>b) - 用each循环对象</h6>
-<div class="editor" style="height:190px;">
-//_.each()方法也可以用来循环对象.
-
-_.each({one: '一', two: '二', three: '三'}, function(val, key){
-    //val返回的是键值，key返回的键名
-    console.log([val, key]);
-});
-
-//=>
-//["一", "one"]
-//["二", "two"]
-//["三", "three"]
-</div>
-<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/2v4QV/</a></div>
-<p>通过以上两个例子，我们可以发现<em>each方法可以循环数组，也可以循环对象。</em>而且使用也是那么的简单。</p>
+<p>集合函数可以用来操作数组或对象，熟练的掌握这些方法，可以大大提高我们的生产力。</p>
+<div class="floor" data-html="2/2_1_each.html"></div>
+<div class="floor" data-html="2/2_2_map.html"></div>
 
 
-<h6>c) - each里面的this是什么?</h6>
-<div class="editor" style="height:90px;">
-_.each([11, 22, 33], function () {
-    //原来this指向全局Window
-    console.log(this);
-});
-</div>
-<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/UK9Ec/</a></div>
-<p>通过上面这个例子，我们可以清楚的看到，在each里面，原来this指向了全局，在WEB环境中指向了Window。</p>
 
-<h6>d) - context参数说明</h6>
-<div class="editor" style="height:140px;">
-var obj = {
-    test: 1
-};
-_.each([1, 2, 3], function (i) {
-    console.log(this); //现在的this已经指向了obj.
-}, obj);
-</div>
-<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/H36ED/</a></div>
-<p>当each传入了context之后，this将不在是Window了,指向了context。这样子就很方便的把外部的变量传入到each里面。</p>
-
-
-<h6>e) - iterator参数说明</h6>
-<div class="editor" style="height:70px;">
-_.each([1, 2, 3], function (d, i, list) {
-    console.log(list); //[1, 2, 3]
-});
-</div>
-<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/Yhn7P/</a></div>
-
-<p>iterator回调方法会传递三个参数：(element, index, list)，前两个参数的用法在前面的例子中已经展示了，而第三个参数则是指向了list本身。虽然他传递了三个参数，事实情况可以根据需要选用参数，可以只用一个element，甚至一个也不用也不会有问题。</p>
-
-<p>看到这里，相信此时的你已经掌握了_.each()的使用方法了，事实很多前端库或是前库框架里都有each方法，有兴趣的同学可以看一下jQuery里的each：
-<a href="http://api.jquery.com/jQuery.each/" target="_blank">http://api.jquery.com/jQuery.each/</a>和Kissy里的each:<a href="http://docs.kissyui.com/1.4/docs/html/api/lang/each.html" target="_blank">http://docs.kissyui.com/1.4/docs/html/api/lang/each.html</a></p>
-
-<p>使用each有以下几个理由：</p>
-<ol>
-	<li>代码清晰，因为用for循环的时候肯定增加length和i这两个变量。</li>
-    <li>使用简单，不需要区别，循环数组的时候我们要用for循环，循环对象的时候用for in循环。</li>
-    <li>效率保证，因为使用for循环有很多优化讲究，而用for in循环对象的时候，则要判断一个对象是否包含自定义属性而不是原型链上的属性等。</li>
-</ol>
-</div>
 
 <script type="text/javascript">
-	$('.jsfiddle-link a').each(function(){
-		var my = $(this);
-		my.attr({
-			target : '_blank',
-			href : my.text()
-		})
-	});
 	
-	$('.editor').each(function(){
-		var my = $(this)[0];
-		var editor = ace.edit(my);
-    	editor.setTheme("ace/theme/dawn");
-    	editor.getSession().setMode("ace/mode/javascript");
+	$('.floor').each(function(){
+		var my = $(this),
+			html = my.data('html'),
+			editor;
+			my.load(html, function(){
+				my.find('.editor').each(function(){
+					var myEditor = $(this)[0];
+					var editor = ace.edit(myEditor);
+    				editor.setTheme("ace/theme/dawn");
+    				editor.getSession().setMode("ace/mode/javascript");
+				});
+				
+				my.find('.jsfiddle-link a').each(function(){
+					$(this).attr({
+					target : '_blank',
+					href : $(this).text()
+					});
+				});
+				
+			});
 	});
+		$
 </script>
 </body>
 </html>
