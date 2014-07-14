@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.1 - map</title>
+</head>
+
+<body>
+<div id="reduceRight">
+	<h4>2.4 - reduceRight(右精简)</h4>
+    <p>语法: _.reduceRight(list, iterator, memo, [context])</p>
+    <p>别名: inject, foldl</p>
+    <p>关键词：<em>合并、精简、归一</em>。</p>
+    
+    
+    <h6>a) - 用reduce精简数组</h6>
+    <div class="editor" style="height:390px;">
+//例1：没有传memo参数
+var sum1 = _.reduce([1, 2, 3], function (memo, num) {
+    console.log(memo, num);
+    return memo + num;
+});
+console.log('sum1是：' + sum1);
+//=>
+//1 2
+//3 3
+//sum1是：6
+
+//例2：传了memo参数
+var sum2 = _.reduce([1, 2, 3], function (memo, num) {
+    console.log(memo, num);
+    return memo + num;
+}, 0);
+console.log('sum2是：' + sum2);
+//=>
+//0 1
+//1 2
+//3 3
+//sum2是：6
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/p2W42/</a></div>
+<p> _.reduce()方法把list中的值合并、精简、归为一个单独的数值。对数组中的所有元素调用指定的回调函数。 该回调函数的返回值为累积结果，并且此返回值在下一次调用该回调函数时作为参数提供。</p>
+<p>memo是reduce函数的初始值，在例1里面，传了list, iterator两个参数，在例2里面传了list, iterator, memo三个参数，如果没有传memo，那么list的第一个值就默认为memo，所以在例1只循环了2次，而在例2里面循环了3次。</p>
+
+
+<h6>b) - 用reduce精简对象</h6>
+<div class="editor" style="height:290px;">
+var list = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+var sum1 = _.reduce(list, function (memo, num) {
+    console.log(memo, num);
+    //=> abc 1
+	//=> abc1 2
+	//=> abc12 3
+    
+    return memo + num;
+}, 'abc');
+
+console.log('sum1是：' + sum1);
+//=> sum1是：abc123
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/LuJB9/</a></div>
+<p>_.reduce()也是可以操作对象的，memo地方传了一个字符串进去，因此里面的操作变成了字符串相加，所以出来的结果是一个字符串。</p>
+
+
+<h6>c) - context参数说明</h6>
+<div class="editor" style="height:260px;">
+var context = [10, 20, 30],
+    list = [1, 2, 3],
+
+    sum = _.reduce(list, function (memo, num, index, list) {
+        console.log(this[index]);
+        //=> 10
+        //=> 20
+        //=> 30
+
+        return memo + num + this[index];
+    }, 0, context);
+
+console.log(sum);
+//=> 66
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/4Etf5/</a></div>
+<p>_.reduce()的第四个参数context传入之后，iterator函数体里面的this则指向了context。</p>
+
+
+<h6>d) - iterator参数说明</h6>
+<div class="editor" style="height:160px;">
+_.reduce(['a', 'b', 'c'], function (memo, num, index, list) {
+    console.log(memo, num, index, list);
+    return memo + num;
+}, '');
+//=> a 0 ["a", "b", "c"]
+//=> a b 1 ["a", "b", "c"]
+//=> ab c 2 ["a", "b", "c"]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/pq3GJ/</a></div>
+<p>iterator，一共有四个参数，第一个是memo，可以理解一个记忆初始值；第二个为list里面每项的元素（值）；第三个为index，如果是对象则为key,第四个为list本身。</p>
+
+
+
+
+
+</div>
+</body>
+</html>
