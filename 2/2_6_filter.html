@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.6 - filter</title>
+</head>
+
+<body>
+<div id="filter">
+	<h4>2.6 - filter(筛选)</h4>
+    <p>语法: _.filter(list, predicate, [context])</p>
+    <p>别名: select</p>
+    <p>关键词：<em>筛选、选择</em>。</p>
+    <p>遍历list中的每个值，返回包含所有通过predicate真值检测的元素值。</p>
+    
+<h6>a) - 从数组里筛选数组</h6>
+<div class="editor" style="height:250px;">
+//从数组筛选
+var evens = _.filter([1, 2, 3, 4, 5, 6], function (n) {
+    return n % 2 === 0;
+});
+console.log(evens);
+//=> [2, 4, 6]
+
+//返回的始终是数组。
+var evens2 = _.filter([1, 2, 3, 4, 5, 6], function (n) {
+    return n > 15;
+});
+console.log(evens2);
+//=> []
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/s95zc/</a></div>
+<p>_.filter()返回值始终是数组，哪怕只有一个元素符合条件或是一个元素也不符合。</p>
+
+
+<h6>b) - 从对象里筛选数据</h6>
+<div class="editor" style="height:250px;">
+//从对象筛选
+var list = {
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4
+};
+
+var evens = _.filter(list, function (v) {
+    return v % 2 === 0;
+});
+console.log(evens);
+//=> [2, 4]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/ge9jg/</a></div>
+<p>虽然list是一个对象，但是返回依然是数组。如果list为对象，返回为对象的value的集合而非对象集合</p>
+
+
+<h6>c) - context参数说明</h6>
+<div class="editor" style="height:250px;">
+//context可以改变predicate里面this的指向
+var context = ['a', false, NaN, true, null];
+var list = [0, 1, 2, 3, 4, 5];
+
+var evens = _.filter(list, function (v) {
+    console.log(this);
+    //=>["a", false, NaN, true, null]   
+
+    return true && this[v];
+}, context);
+
+console.log(evens);
+//=>[0, 3]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/zSawq/</a></div>
+<p>context可以改变predicate里面this的指向。</p>
+
+<h6>d) - predicate参数说明</h6>
+<div class="editor" style="height:250px;">
+var list = [-1, -2, -3];
+
+var evens = _.filter(list, function (n, index, list) {
+    console.log(n, index, list);
+    //=>-1 0 [-1, -2, -3]
+    //=>-2 1 [-1, -2, -3]
+    //=>-3 2 [-1, -2, -3]
+    return Math.abs(n) > 1;
+});
+
+console.log(evens);
+//=> [-2, -3]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/atkp3/</a></div>
+<p>predicate回调函数有三个参数，第一个参数为list里的元素，第二个参数为元素对应list的index，第三个参数为list本身。</p>
+
+
+
+</div>
+</body>
+</html>

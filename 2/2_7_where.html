@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.6 - filter</title>
+</head>
+
+<body>
+<div id="where">
+	<h4>2.7 - where(特性查找)</h4>
+    <p>语法: _.where(list, properties) </p>
+    <p>关键词：<em>按特性查找</em>。</p>
+    <p>创建一个新数组，遍历list中的每一个元素，如果这个元素有properties的特性(即拥有和他一样的属性，比如说键名是一样的，键值也是一样的)，那么这个元素添加到新数组里。最后返回这个新数组。</p>
+    
+<h6>a) - 从list中筛选出有properties特性的元素</h6>
+<div class="editor" style="height:290px;">
+var list = [{
+    'name': 'guofucheng',
+    'sex': 'Male'
+}, {
+    'name': 'fanbingbing',
+    'sex': 'Female'
+}, {
+    'name': 'liudehua',
+    'sex': 'Male'
+}];
+var properties = {'sex' : 'Male'};
+var stars = _.where(list, properties);
+
+console.log(stars);
+//=>  [Object {name="guofucheng", sex="Male"}, Object {name="liudehua", sex="Male"}]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/6jvgU/</a></div>
+<p>_.where()方法第一个参数传的是list(集合);第二个参数传的是一个特性(比如说是一个对象)，不是一个回调函数。返回的数组中的元素都拥有{'sex' : 'Male'}特性。事实上如果不用_.where()，你们也可以用_.filter()来实现他。</p>
+
+
+<h6>b) - 用filter实现同样的功能</h6>
+<div class="editor" style="height:310px;">
+var list = [{
+    'name': 'guofucheng',
+    'sex': 'Male'
+}, {
+    'name': 'fanbingbing',
+    'sex': 'Female'
+}, {
+    'name': 'liudehua',
+    'sex': 'Male'
+}];
+var properties = {'sex' : 'Male'};
+var stars = _.filter(list, function(o){
+    return o.sex === 'Male'; 
+});
+console.log(stars);
+//=>[Object {name="guofucheng", sex="Male"}, Object {name="liudehua", sex="Male"}]
+
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/qq2Yn/</a></div>
+<p>_.filter()和_.where()一起对比来理解一下的话，_.where()是直接传入了一个特性，而_.filter()的特性在回调函数里返回。如果需要过滤不同的特性的时候可以考虑用_.filter()，如果list经常变，那特性不变的情况，可以考虑使用_.where()。</p>
+
+
+<h6>c) - 设置多一点特性</h6>
+<div class="editor" style="height:390px;">
+var list = [{
+    name: 'guofucheng',
+    sex: 'Male',
+    age : 18
+}, {
+    name: 'fanbingbing',
+    sex: 'Female',
+    age : 18
+}, {
+    name: 'liudehua',
+    sex: 'Male',
+    age : 17
+}];
+
+//可以设置多一点条件
+var properties = {
+    sex: 'Male',
+    age : 18
+};
+var stars = _.where(list, properties);
+console.log(stars);
+//=>[Object {name="guofucheng", sex="Male", age=18}]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/cq8Vw/</a></div>
+<p>当数组里的元素是一个对象并需要复筛选元素的时候，比较适合用_.where()。</p>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

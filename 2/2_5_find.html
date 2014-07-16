@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.5 - find</title>
+</head>
+
+<body>
+<div id="find">
+	<h4>2.5 - find(查找)</h4>
+    <p>语法: _.find(list, predicate, [context])</p>
+    <p>别名: detect</p>
+    <p>关键词：<em>寻找、查找</em>。</p>
+    
+    
+    <h6>a) - 用find查找</h6>
+    <p>在list中逐项查找，返回第一个通过predicate迭代函数真值检测的元素值，如果没有值传递给测试迭代器将返回undefined。 如果找到匹配的元素，函数将立即返回，不会遍历整个list。</p>
+    <div class="editor" style="height:250px;">
+//返回第一个符合条件的值，一旦找到符合条件的值，立即返回，循环中断
+var even = _.find([1, 2, 3, 4, 5, 6], function (n) {
+    console.log(n);
+    //=>1
+    //=>2
+    //=>3
+    //=>4
+    return n % 4 === 0;
+});
+
+console.log(even);
+//=>4
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/QD2QE/</a></div>
+<p>上例里第一个符合条件的值是4,当找到4之后即返回了结果，所在没有继续循环5和6。</p>
+
+
+<h6>b) - 什么情况会返回undefined</h6>
+<div class="editor" style="height:350px;">
+//没有找到符合条件的值，返回undefined
+var even1 = _.find([1, 3, 3, 5, 5, 7], function (n) {
+    return n % 2 === 0;
+});
+
+console.log('even1的返回值是：' + even1);
+//=>even1的返回值是：undefined
+
+
+//predicate没有返回值，返回undefined
+var even2 = _.find(['a', 'b', 'c'], function (n) {
+    console.log(n);
+    //=>a
+    //=>b
+    //=>c
+});
+
+console.log('even2的返回值是：' + even2);
+//=>even2的返回值是：undefined
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/x5p3H/</a></div>
+<p>在list里没有找到符合条件的值，或是predicate没有返回值，返回的值是undefined，在这两种情况，事实上已经把list循环一遍。</p>
+
+
+
+
+<h6>c) - context参数说明</h6>
+<div class="editor" style="height:270px;">
+//如果有context,那么迭代器的this会指向context
+var obj = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+var even = _.find(['a', 'b', 'c'], function (key) {
+    console.log(this);
+    //=>Object {a=1, b=2, c=3}
+
+    return this[key] % 2 === 0;
+}, obj);
+console.log(even);
+//=> b
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/Mv2Av/</a></div>
+<p>当参数传入了context之后，那么在那迭代函数里的this会指向context。</p>
+
+
+<h6>d) - predicate参数说明</h6>
+<div class="editor" style="height:280px;">
+var even = _.find({
+    a: 1,
+    b: 2,
+    c: 3
+}, function (val, key, list) {
+    console.log(val, key, list);
+    //=> 1 a Object {a=1, b=2, c=3}
+    //=> 2 b Object {a=1, b=2, c=3}
+    //=> 3 c Object {a=1, b=2, c=3}
+
+    return val === 3;
+});
+
+console.log(even);
+//=> 3
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/b5bLu/</a></div>
+<p>predicate迭代函数有三个参数，第一个参数是list里面的元素，第二个参数是元素对应的index或是对象的key，第三个参数是list本身。</p>
+
+
+</div>
+</body>
+</html>
