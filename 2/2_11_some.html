@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.10 - every</title>
+</head>
+
+<body>
+<div id="some">
+	<h4>2.11 - some(一些)</h4>
+    <p>语法: _.every(list, [predicate], [context])</p>
+    <p>名别: any(任何一个)</p>
+    <p>关键词：<em>任何一个</em>。</p>
+    <p>如果list中的元素只要有一个符合predicate条件，则返回true，都不符合才返回false。一旦找到了符合条件的元素, 就直接中断</p>
+    
+<h6>a) - some示例</h6>
+<div class="editor" style="height:280px;">
+//测试是不是有一个值大于4,返回值是布尔值
+var res = _.some([1, 2, 3, 4, 5, 6], function (n) {
+    console.log(n);
+    //=> 1
+    //=> 2
+    //=> 3
+    //=> 4
+    //=> 5
+    return n > 4;
+});
+
+console.log(res)
+//=> true
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/Jyf2M/</a></div>
+<p>只要有一项大于4则返回true，我们发现predicate里面的6并没有出现，因为一旦找到了符合条件的元素, 就直接中断，然后回结果了</p>
+<p>学习_.some()的和结合<a href="#every">_.every()</a>一起学习，predicate是可以省略的，context则可以改成predicate里面的this指向。而predicate和_.every()一样，有三个返回的参数。</p>
+
+
+
+
+
+
+</div>
+</body>
+</html>

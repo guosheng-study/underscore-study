@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.12 - contains</title>
+</head>
+
+<body>
+<div id="some">
+	<h4>2.12 - contains(包含)</h4>
+    <p>语法: _.contains(list, value)</p>
+    <p>名别: include</p>
+    <p>关键词：<em>包括、包含</em>。</p>
+    <p>检测list是否包含了value，如果包含了返回true，否则就返回false</p>
+    
+<h6>a) - contains检测是否包含一个值</h6>
+<div class="editor" style="height:120px;">
+//测试是数组里是否包含4,返回值是布尔值
+var res = _.contains([1, 2, 3, 4, 5, 6], 4);
+console.log(res);
+//=> true
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/LMPjK/</div>
+<p>_.contains()有两个参数list和value，检测list是否包含了value,如果包含了则返回true。</p>
+
+<h6>b) - 不能检测是否包含一个数组</h6>
+<div class="editor" style="height:200px;">
+//测试是数组里是否包含[1, 2]
+var res = _.contains([1, 2, 3, 4, 5, 6], [1, 2]);
+console.log(res);
+//=> false
+
+var res2 = _.contains([1, 2, 3, 4, 5, 6, [1, 2]], [1, 2]);
+console.log(res2);
+//=> false
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/qK74E/</div>
+<p>上面的两例都返回了false，后面的参数只能为一个值，不可以是数组。</p>
+
+
+<h6>c) - 测试对象是否包含值</h6>
+<div class="editor" style="height:280px;">
+//测试是对象里否包含值。
+var list = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+
+var res1 = _.contains(list, 1);
+console.log(res1);
+//=> true
+
+var res2 = _.contains(list, 4);
+console.log(res2);
+//=> false
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/84wsu/</div>
+
+
+<h6>d) - 测试对象是否包含某个属性</h6>
+<div class="editor" style="height:420px;">
+//测试是对象里否包含键名。
+var list = {
+    a: 1
+};
+
+var res1 = _.contains(list, list.a);
+var res2 = _.contains(list, list.b);
+console.log(res1);
+//=> true
+console.log(res2);
+//=> false
+
+
+//确保list没有一个值是undefined
+var list2 = {
+    a: undefined
+};
+
+var res3 = _.contains(list2, list2.a);
+var res4 = _.contains(list2, list2.b);
+console.log(res3);
+//=> true
+console.log(res4);
+//=> true
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/SKx8A/</div>
+<p>_.contains()的第三个参数是value看上去是要传入一个值，也可以像上例一样，巧妙的测试list是否含有一个属性（方法）。当然你得确保list的值，没有一个值是undefined的，不然的话则可能出错。</p>
+
+
+
+</div>
+</body>
+</html>

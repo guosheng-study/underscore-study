@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.13 - invoke</title>
+</head>
+
+<body>
+<div id="invoke">
+	<h4>2.13 - invoke(调用)</h4>
+    <p>语法: _.invoke(list, methodName, *arguments) </p>
+    <p>关键词：<em>调用指定方法</em>。</p>
+    <p>list里的每个元素，调用指定方法。list必须要methodName的方法</p>
+    
+<h6>a) - 调用数组排续方法</h6>
+<div class="editor" style="height:120px;">
+//每个数组都调用sort方法
+var res = _.invoke([
+    [5, 1, 7],
+    [3, 2, 1]
+], 'sort');
+console.log(res);
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/u5HT3/</div>
+<p>_.contains()有两个参数list和value，检测list是否包含了value,如果包含了则返回true。</p>
+
+
+
+
+</div>
+</body>
+</html>

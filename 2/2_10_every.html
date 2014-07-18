@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.10 - every</title>
+</head>
+
+<body>
+<div id="every">
+	<h4>2.10 - every(每项)</h4>
+    <p>语法: _.every(list, [predicate], [context])</p>
+    <p>名别: all(全部)</p>
+    <p>关键词：<em>每项、全部</em>。</p>
+    <p>如果list中的所有元素都符合predicate条件，则返回true，否则返回false</p>
+    
+<h6>a) - 数组的每项都符合条件</h6>
+<div class="editor" style="height:130px;">
+var res = _.every([1, 2, 3, 4, 5, 6], function (num) {
+    return num > 0;
+});
+console.log(res);
+//=> true
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/Jyf2M/</a></div>
+<p>上例数组中每项元素都大于0，因此返回true。</p>
+
+<h6>b) - 当有一个条件不符合即中断</h6>
+<div class="editor" style="height:200px;">
+var res = _.every([1, -2, 3, 4, 5, 6], function (num) {
+    console.log(num);
+    //=> 1
+    //=> -2
+    return num > 0;
+});
+console.log(res);
+//=> false
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/K5mks/</a></div>
+<p>上例中,-2已经不大于0了，所以就中断了，直接返回了false，如果我们反过来理解，只要有一项不符合条件就返回false,只有全符合了才返回了true。</p>
+
+
+<h6>c) - predicate参数也是可以省略的</h6>
+<div class="editor" style="height:180px;">
+var res1 = _.every([1, -2, 3, 4, 5, 6]);
+console.log(res1);
+//=> true
+
+var res2 = _.every([1, false, 3, 4, 5, 6]);
+console.log(res2);
+//=> false
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/bqSU9/</a></div>
+<p>predicate没有传值的时候，直接判断list里的值每一项是不是为true如果每一项都为ture则返回true,如果有一项为false则返回false。例子为false，当然可以是null、NaN、undefined、0等。</p>
+
+
+
+<h6>d) - context参数说明</h6>
+<div class="editor" style="height:330px;">
+var context = {
+    a: NaN,
+    b: 0,
+    c: false
+};
+var res = _.every(['a', 'b', 'c'], function (n) {
+    console.log(n, this);
+    //=> a Object {a=NaN, b=0, c=false}
+    //=> b Object {a=NaN, b=0, c=false}
+    //=> c Object {a=NaN, b=0, c=false}
+    
+    return this[n] || false === false;
+
+}, context);
+
+console.log(res)
+//=>true
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/PBLSq/</a></div>
+<p>当传入context之后，predicate里面的this即是context。context里面的值每一项都==false所以返回了true。</p>
+
+
+<h6>e) - predicate参数说明</h6>
+<div class="editor" style="height:250px;">
+var res = _.every([2, 4, 6, 8], function (n, index, list) {
+    console.log(n, index, list);
+    //=> 2 0 [2, 4, 6, 8]
+    //=> 4 1 [2, 4, 6, 8]
+    //=> 6 2 [2, 4, 6, 8]
+    //=> 8 3 [2, 4, 6, 8]
+
+    return list[index] % 2 === 0;
+});
+
+console.log(res)
+//=>true
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/MqvhL/</a></div>
+<p>predicate返回了三个参数，第一个参数为元素里的值，第二个参数为元素对应list的序号index,第三个参数为list本身。</p>
+
+
+
+
+</div>
+</body>
+</html>

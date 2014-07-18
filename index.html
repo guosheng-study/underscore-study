@@ -38,7 +38,13 @@ em{ font-size:14px; font-weight:700; color:red; font-style:normal;}
 <div class="floor" data-html="2/2_4_reduceRight.html"></div>
 <div class="floor" data-html="2/2_5_find.html"></div>
 <div class="floor" data-html="2/2_6_filter.html"></div>
-<div class="floor" style="display:block;" data-html="2/2_7_where.html"></div>
+<div class="floor" data-html="2/2_7_where.html"></div>
+<div class="floor" data-html="2/2_8_findWhere.html"></div>
+<div class="floor" data-html="2/2_9_reject.html"></div>
+<div class="floor" data-html="2/2_10_every.html"></div>
+<div class="floor" data-html="2/2_11_some.html"></div>
+<div class="floor" data-html="2/2_12_contains.html"></div>
+<div class="floor" style="display:block;" data-html="2/2_13_invoke.html"></div>
 
 
 <script type="text/javascript">
@@ -53,6 +59,7 @@ em{ font-size:14px; font-weight:700; color:red; font-style:normal;}
 					var editor = ace.edit(myEditor);
     				editor.setTheme("ace/theme/dawn");
     				editor.getSession().setMode("ace/mode/javascript");
+					editor.getSession().setUseWrapMode(true);
 				});
 				
 				my.find('.jsfiddle-link a').each(function(){

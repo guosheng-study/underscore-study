@@ -10,10 +10,10 @@
 	<h4>2.7 - where(特性查找)</h4>
     <p>语法: _.where(list, properties) </p>
     <p>关键词：<em>按特性查找</em>。</p>
-    <p>创建一个新数组，遍历list中的每一个元素，如果这个元素有properties的特性(即拥有和他一样的属性，比如说键名是一样的，键值也是一样的)，那么这个元素添加到新数组里。最后返回这个新数组。</p>
-    
+     <p>筛选集合中符合指定条件的元素并返回新的结果集，list为筛选的目标集合,properties键值对(指定条件)，如{sex:'Male'},若为多个，则以逗号分隔， 如{sex:'Male',age,10}</p>
+
 <h6>a) - 从list中筛选出有properties特性的元素</h6>
-<div class="editor" style="height:290px;">
+<div class="editor" style="height:310px;">
 var list = [{
     'name': 'guofucheng',
     'sex': 'Male'
@@ -25,6 +25,8 @@ var list = [{
     'sex': 'Male'
 }];
 var properties = {'sex' : 'Male'};
+
+//筛选出list集合中sex为Male的元素
 var stars = _.where(list, properties);
 
 console.log(stars);

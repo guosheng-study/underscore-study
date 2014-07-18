@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.6 - filter</title>
+</head>
+
+<body>
+<div id="reject">
+	<h4>2.9 - reject(排除)</h4>
+    <p>语法: _.reject(list, predicate, [context])</p>
+    <p>关键词：<em>排除、去除</em>。</p>
+    <p>筛选并返回集合中不符合条件的元素，与<a href="#filter">_.filter()</a>相反。</p>
+    
+<h6>a) - 数组排除</h6>
+<div class="editor" style="height:130px;">
+var evens = _.reject([1, 2, 3, 4, 5, 6], function (num) {
+    return num % 3 === 0; //排除能被3整除的元素
+});
+
+console.log(evens);
+//=>[1, 2, 4, 5]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/24Jx3/</a></div>
+<p></p>
+
+<h6>b) - 对象排除</h6>
+<div class="editor" style="height:240px;">
+var evens = _.reject({
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4
+}, function (num) {
+    return num % 2 === 0; //排除能被2整除的元素
+});
+
+console.log(evens);
+//=>[1, 3]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/hbLH3/</a></div>
+<p>注意，在操作对象的时候，还是返回了对象的值，并不像{a:1, c:3}这样子。context参数可以改变predicate里面this的指向。predicate返回的参数和_.filter()一样，第一个参数为list里的元素，第二个参数为元素对应list的index，第三个参数为list本身。如有不明之处可以查看<a href="#filter">_.filter()</a></p>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

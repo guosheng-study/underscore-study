@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.6 - filter</title>
+</head>
+
+<body>
+<div id="findWhere">
+	<h4>2.8 - findWhere(特性查找第一项)</h4>
+    <p>语法: _.findWhere(list, properties) </p>
+    <p>关键词：<em>按特性查找第一项</em>。</p>
+    
+    <p>筛选集合中符合指定条件的第一个元素并返回新的结果。list为筛选的目标集合；properties键值对(指定条件)，如{sex:'Male'},若为多个，则以逗号分隔， 如{sex:'Male',age,10}</p>
+    
+<h6>a) - 从list中筛选出有properties特性的第一个元素</h6>
+<div class="editor" style="height:330px;">
+var list = [{
+    'name': 'guofucheng',
+    'sex': 'Male'
+}, {
+    'name': 'fanbingbing',
+    'sex': 'Female'
+}, {
+    'name': 'liudehua',
+    'sex': 'Male'
+}];
+var properties = {'sex' : 'Male'};
+
+//筛选出list集合中sex为Male的第一个元素。
+var stars = _.findWhere(list, properties);
+
+console.log(stars);
+//=> Object {name="guofucheng", sex="Male"}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/eFrz3/</a></div>
+<p>_.where()方法返回的是一个数组，而_.findWhere()和_.find()一样，返回都只是list里的一个元素，都不是数组。下面我们用_.find()来实现同样的功能。</p>
+
+
+<h6>b) - 用find实现同样的功能</h6>
+<div class="editor" style="height:330px;">
+var list = [{
+    name: 'guofucheng',
+    sex: 'Male'
+}, {
+    name: 'fanbingbing',
+    sex: 'Female'
+}, {
+    name: 'liudehua',
+    sex: 'Male'
+}];
+
+//筛选出list集合中sex为Male的第一个元素。
+var star = _.find(list, function (v) {
+    return v.sex === 'Male';
+});
+
+console.log(star);
+//=> Object {name="guofucheng", sex="Male"}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/hbLH3/</a></div>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
