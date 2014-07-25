@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.17 - sortBy</title>
+</head>
+
+<body>
+<div id="sortBy">
+	<h4>2.17 - sortBy(排序)</h4>
+    <p>语法: _.sortBy(list, iterator, [context])</p>
+    <p>关键词：<em>排序</em>。</p>
+    <p>返回一个递增的排序列表，按照iterator返回值进行排序。比如说可以是字符串的长度</p>
+    
+<h6>a) - 按字符串的长度排序</h6>
+<div class="editor" style="height:180px;">
+//将数值转换为字符串，然后按字符串的长度排序，并返回结果
+var sort = _.sortBy([11, -12, -13, 0.24, 5, 6], function(num){ 
+    return num.toString().length; 
+});
+
+console.log(sort)
+//=>[5, 6, 11, -12, -13, 0.24]
+
+
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/7TDKs/</div>
+<p>_.sortBy()的第一个参数传入需要排序的list,他将会按iterator返回的值从小到大的进行排序，并返回结果。</p>
+
+
+
+
+
+<h6>b) - 根据元素的属性排序</h6>
+<div class="editor" style="height:350px;">
+var stooges = [{
+    name: 'moe',
+    age: 44
+}, {
+    name: 'larry',
+    age: 75
+}, {
+    name: 'curly',
+    age: 60
+}];
+
+var res = _.sortBy(stooges, function (stooge) {
+    return stooge.age
+});
+
+console.log(res);
+//=>[Object {name="moe", age=44}, Object {name="curly", age=60}, Object {name="larry", age=75}]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/XW39g/</div>
+<p>可以根据元素的属性排序。在本例中按照元素的age,将list重新排序。</p>
+
+
+<h6>c) - context参数说明</h6>
+<div class="editor" style="height:370px;">
+var stooges = [{
+    name: 'moe'
+}, {
+    name: 'larry'
+}, {
+    name: 'curly'
+}];
+
+var ages = {
+    moe: 44,
+    larry: 75,
+    curly: 60
+};
+
+var res = _.sortBy(stooges, function (v) {
+    return this[v.name];
+}, ages);
+
+console.log(res);
+//=>[Object {name="moe"}, Object {name="curly"}, Object {name="larry"}]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/FRpe6/</div>
+<p>当传了第三个参数context，那么在iterator内的this就指向了context。stooges的元素虽然没有age的属性，但是有一个ages对象，对应起来之后重新排序。</p>
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

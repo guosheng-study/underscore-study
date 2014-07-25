@@ -10,19 +10,48 @@
 	<h4>2.13 - invoke(调用)</h4>
     <p>语法: _.invoke(list, methodName, *arguments) </p>
     <p>关键词：<em>调用指定方法</em>。</p>
-    <p>list里的每个元素，调用指定方法。list必须要methodName的方法</p>
+    <p>list里的每个元素，调用名为methodName的方法，arguments为methodName的参数。如果methodName的方法不需要参数，则arguments可以不传。</p>
     
 <h6>a) - 调用数组排续方法</h6>
-<div class="editor" style="height:120px;">
+<div class="editor" style="height:150px;">
 //每个数组都调用sort方法
 var res = _.invoke([
     [5, 1, 7],
     [3, 2, 1]
 ], 'sort');
 console.log(res);
+//=> [[1, 5, 7], [1, 2, 3]] 
 </div>
 <div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/u5HT3/</div>
-<p>_.contains()有两个参数list和value，检测list是否包含了value,如果包含了则返回true。</p>
+<p>本例的list是一个数组，而数组里的元素也是一个数组，然后每个数组都调用sort方法。</p>
+
+
+
+
+
+<h6>b) - arguments参数说明</h6>
+<div class="editor" style="height:350px;">
+//将数组按降序排列
+var list = [
+    [5, 7, 10],
+    [3, 1, 4]
+];
+//定义降序排列函数
+var desc = function (a, b) {
+    if (a >= b) {
+        return -1; //小于1，不交换位置
+    } else {
+        return 1; //大于1，交换位置
+    }
+};
+//list里的每个元素都调用sort方法的降序排列
+var res = _.invoke(list, 'sort', desc);
+console.log(res);
+//=>[[10, 7, 5], [4, 3, 1]]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/u5HT3/</div>
+<p>invoke第三个参数为 methodName 方法的参数，上例中调用了数组的原生sort方法。arrayObject.sort(sortby)，也就是说这里arguments传入参数实际是给sort用的。即是参数sortby。</p>
+
 
 
 

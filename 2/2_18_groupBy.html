@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.17 - sortBy</title>
+</head>
+
+<body>
+<div id="groupBy">
+	<h4>2.18 - groupBy(群组)</h4>
+    <p>语法: _.sortBy(list, iterator, [context])</p>
+    <p>关键词：<em>分类</em>。</p>
+    <p>按iterator的返回结果分类list的元素，返回的结果会变成一个对象。</p>
+    
+<h6>a) - 按iterator的返回值分类</h6>
+<div class="editor" style="height:180px;">
+//分类
+var res = _.groupBy([1.3, 2.1, 2.4], function (num) {
+    return Math.floor(num); //取整后分类
+});
+
+//返回的是一个对象
+console.log(res);
+//=>{1: [1.3], 2: [2.1, 2.4]}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/CgNHL/</div>
+<p>_.groupBy()的第一个参数传入需要排序的list,他将会按iterator返回的值从小到大的进行排序，并返回结果。</p>
+
+
+
+<h6>b) - iterator可是一个iterator的属性</h6>
+<div class="editor" style="height:100px;">
+var res = _.groupBy(['one', 'two', 'three'], 'length');
+console.log(res);
+//= > {3: ["one", "two"], 5: ["three"]}
+
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/CgNHL/</div>
+<p>如是iterator不是一个方法，也可是list元素的一个属性进行分类。同样返回的也是一个对象。</p>
+
+
+
+
+<h6>c) - context参数说明</h6>
+<div class="editor" style="height:270px;">
+var stooges = ['moe', 'larry', 'curly'];
+
+var ages = {
+    moe: 20,
+    larry: 20,
+    curly: 30
+};
+
+var res = _.groupBy(stooges, function (v) {
+    return this[v];
+}, ages);
+
+console.log(res);
+//=> {20:["moe", "larry"], 30: ["curly"]}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/FRpe6/</div>
+<p>当传了第三个参数context，那么在iterator内的this就指向了context。</p>
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

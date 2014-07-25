@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.13 - invoke</title>
+</head>
+
+<body>
+<div id="pluck">
+	<h4>2.14 - pluck(采集)</h4>
+    <p>语法: _.pluck(list, propertyName)</p>
+    <p>关键词：<em>采集、提取</em>。</p>
+    <p>从list里面提取指定属性的值。</p>
+    
+<h6>a) - 提取属性的值</h6>
+<div class="editor" style="height:270px;">
+//收集属性为name的值。
+var stooges = [{
+    name: 'moe',
+    age: 40
+}, {
+    name: 'larry',
+    age: 50
+}, {
+    name: 'curly',
+    age: 60
+}];
+var pluck = _.pluck(stooges, 'name');
+console.log(pluck);
+//=>["moe", "larry", "curly"]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/a7PKc/</div>
+<p>_.pluck()比较简单，第一个参数为list,传入数组，数组里的元素是对象，第二个参数只要传入需要提取的值的属性名(键名)</p>
+
+
+<h6>b) - 用_.map()方法实现他</h6>
+<div class="editor" style="height:290px;">
+//收集属性为name的值。
+var stooges = [{
+    name: 'moe',
+    age: 40
+}, {
+    name: 'larry',
+    age: 50
+}, {
+    name: 'curly',
+    age: 60
+}];
+var pluck = _.map(stooges, function(v){
+    return v.name;
+});
+console.log(pluck);
+//=>["moe", "larry", "curly"]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/wGpV2/</div>
+<p>_.pluck()能实现的时候就不必再用_.map()，灵活应用这些方法，可以让代码看上更加优雅。</p>
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

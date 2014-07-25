@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.17 - sortBy</title>
+</head>
+
+<body>
+<div id="indexBy">
+	<h4>2.19 - indexBy(索引分类)</h4>
+    <p>语法: _.indexBy(list, iterator, [context]) </p>
+    <p>关键词：<em>索引分类</em>。</p>
+    <p>当你确定list的每个属性下所有值都是唯一的时候，根据iterator返回list每个元素的索引对象(即每个元素变成了一个对象的值)。</p>
+    
+<h6>a) - 按iterator的返回值分类</h6>
+<div class="editor" style="height:260px;">
+var list = [1.3, 2.1, 2.4],
+    iterator = function (n) {
+        return Math.floor(n);
+    };
+
+var groupByRes = _.groupBy(list, iterator);
+console.log(groupByRes);
+//=>{1: [1.3], 2: [2.1, 2.4]}
+
+var indexByRes = _.indexBy(list, iterator);
+console.log(indexByRes);
+//=>{1: 1.3, 2: 2.4}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/FFHhW/</div>
+<p>为了让_.indexBy()好理解一些，本例和_.groupBy()写在一起进行对比。两个都是返回了对象，而且键名(属性)是一样的，不过值不一样。_.groupBy()的值是重新拼装过的，变成了一个数据，而_.indexBy()的值，就是list的里的元素，因为2.1和2.4执行Math.floor()之后都为2，所以index有重复了，只留下了最后一个。所以在使用_.indexBy()，要确保，每个元素的值是要唯一的。</p>
+
+
+
+<h6>b) - iterator可是一个list的属性</h6>
+<div class="editor" style="height:456px;">
+var list = [{
+    name: 'moe',
+    age: 40
+}, {
+    name: 'larry',
+    age: 50
+}, {
+    name: 'curly',
+    age: 60
+}];
+
+var groupByRes = _.groupBy(list, 'age');
+console.log(groupByRes);
+//=> {
+//=>    40: [0: {name: "moe",age: 40}],
+//=>    50: [0: {name: "larry",age: 50}],
+//=>    60: [0: {name: "curly",age: 60}]
+//=> }
+
+var indexByRes = _.indexBy(list, 'age');
+console.log(indexByRes);
+//=> {
+//=>    40: {name: "moe",age: 40},
+//=>    50: {name: "larry",age: 50},
+//=>    60: {name: "curly",age: 60}
+//=> }
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/37XVe/</div>
+<p>如是iterator不是一个方法，也可是list元素的一个属性。</p>
+
+
+
+
+<h6>c) - context参数说明</h6>
+<div class="editor" style="height:270px;">
+var stooges = ['moe', 'larry', 'curly'];
+
+var ages = {
+    moe: 10,
+    larry: 20,
+    curly: 30
+};
+
+var res = _.indexBy(stooges, function (v) {
+    return this[v];
+}, ages);
+
+console.log(res);
+//=> Object {10="moe", 20="larry", 30="curly"}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/kMmZ2/</div>
+<p>当传了第三个参数context，那么在iterator内的this就指向了context。</p>
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

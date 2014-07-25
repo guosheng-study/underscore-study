@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.16 - min</title>
+</head>
+
+<body>
+<div id="min">
+	<h4>2.16 - min(最小值)</h4>
+    <p>语法: _.min(list, [iterator], [context])</p>
+    <p>关键词：<em>取最小值</em>。</p>
+    <p>从list里取出最小值。</p>
+    
+<h6>a) - 从数组里取最小值</h6>
+<div class="editor" style="height:230px;">
+var numbers = [10, 5, 100, 2, 1000];
+var res = _.min(numbers, function (v, index, list) {
+    console.log(v, index, list);
+    //=> 0 [10, 5, 100, 2, 1000]
+    //=>5 1 [10, 5, 100, 2, 1000]
+    //=>100 2 [10, 5, 100, 2, 1000]
+    //=> 3 [10, 5, 100, 2, 1000]
+    //=>1000 4 [10, 5, 100, 2, 1000]
+    return v;
+});
+console.log(res);
+//=> 2
+
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/YhJ8T/</div>
+<p>_.min()方法和_.max()是一样的，一个是取大值，一个是最小值，而这个例子主要是说明，这两个方法里的iterator有三个参数。第一个参数是每个元素的值，第二个是每个元素对应list的序号，第三个参数是list本身。</p>
+<p>如果有了iterator，是以iterator的返回值进行操作，如果没有返回值，则可能得不到你希望的结果。</p>
+
+
+
+
+
+<h6>b) - context参数说明</h6>
+<div class="editor" style="height:450px;">
+var stooges = [{
+    name: 'moe',
+    age: 40
+}, {
+    name: 'larry',
+    age: 50
+}, {
+    name: 'curly',
+    age: 60
+}];
+var context = {
+    a: 'age',
+    b: 'name'
+};
+
+var res = _.min(stooges, function (stooge) {
+    console.log(this);
+    //=> Object {a="age", b="name"}
+    //=> Object {a="age", b="name"}
+    //=> Object {a="age", b="name"}
+
+    return stooge[this.a];
+}, context);
+
+console.log(res);
+//=>Object {name="moe", age=40}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/x8Ub7/</div>
+<p>本例要说明的，如果传了第三个参数context，那么在iterator里面的this就会指向context。_.max()的方法也是一样的。</p>
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

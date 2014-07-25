@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.20 - countBy</title>
+</head>
+
+<body>
+<div id="countBy">
+	<h4>2.20 - countBy</h4>
+    <p>语法: _.countBy(list, iterator, [context]) </p>
+    <p>关键词：<em>分类统计</em>。</p>
+    <p>list里的元素进行排序，然后按iterator进行分类，最后返回分类统计总数。返回的是一个对象。_.groupBy()返回的是值组成的数组，_.countBy()返回的是数组的长度。</p>
+    
+<h6>a) - 按iterator的返回值分类统计</h6>
+<div class="editor" style="height:160px;">
+var res = _.countBy([1, 2, 3, 4, 5], function (num) {
+    return num % 2 === 0 ? 'even' : 'odd';
+});
+
+console.log(res);
+//=> Object {odd=3, even=2}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/v29q2/</div>
+<p>将list分为奇数和偶数分类，然后返回统计结果。</p>
+
+
+
+<h6>b) - iterator可以是一个list的属性</h6>
+<div class="editor" style="height:156px;">
+var list = ['moe', 'larry', 'curly'];
+var res = _.countBy(list, 'length');
+
+console.log(res);
+//=> Object {3=1, 5=2}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/Kk292/</div>
+<p>如是iterator不是一个方法，也可是list元素的一个属性。</p>
+
+
+
+<h6>c) - context参数说明</h6>
+<div class="editor" style="height:270px;">
+var stooges = ['moe', 'larry', 'curly'];
+
+var ages = {
+    moe: 10,
+    larry: 10,
+    curly: 30
+};
+
+var res = _.countBy(stooges, function (v) {
+    return this[v];
+}, ages);
+
+console.log(res);
+//=> Object {10=2, 30=1}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/6CwRW/</div>
+<p>当传了第三个参数context，那么在iterator内的this就指向了context。年龄10的人数为2个，年龄为30的人数有1个。</p>
+
+
+<h6>d) - 找出一个字符里重复次数最多的那个字符。</h6>
+
+
+
+
+</div>
+</body>
+</html>

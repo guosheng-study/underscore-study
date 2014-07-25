@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.15 - max</title>
+</head>
+
+<body>
+<div id="max">
+	<h4>2.15 - max(最大值)</h4>
+    <p>语法: _.max(list, [iterator], [context])</p>
+    <p>关键词：<em>取最大值</em>。</p>
+    <p>从list里取出最大值。</p>
+    
+<h6>a) - 从数组里取最大值</h6>
+<div class="editor" style="height:210px;">
+//数值取最大值
+var res = _.max([10, 5, 100, 2, 1000]);
+console.log(res);
+//=> 1000
+
+//字符串取最大值
+var res2 = _.max(['10', '5', '100', '2', '1000']);
+console.log(res2);
+//=> 5
+
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/4KQ6p/</div>
+<p>Math.max(x,y)只能在两个值里取出最大值，而_.max()正好弥补了他的不足，使得取最大值非常方便。</p>
+
+
+<h6>b) - list的元素是对象</h6>
+<div class="editor" style="height:310px;">
+var stooges = [{
+    name: 'moe',
+    age: 40
+}, {
+    name: 'larry',
+    age: 50
+}, {
+    name: 'curly',
+    age: 60
+}];
+
+var res = _.max(stooges, function (v) {
+    return v.age; //根据age取最大值
+}); 
+
+console.log(res);
+//=> Object {name="curly", age=60}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/AX72e/</div>
+<p>list的元素是对象的时候，用这种方式的取最大值，方便了许多。如果我们用要原生的怎么来做呢？</p>
+
+
+
+<h6>c) - 用原生方法来取最大值</h6>
+<div class="editor" style="height:410px;">
+var stooges = [{
+    name: 'moe',
+    age: 40
+}, {
+    name: 'larry',
+    age: 50
+}, {
+    name: 'curly',
+    age: 60
+}];
+
+var res = stooges[0],
+    len = stooges.length,
+    i;
+
+for (i = 1; i < len; i++) {
+    if (stooges[i].age > res.age) {
+        res = stooges[i];
+    }
+}
+
+console.log(res);
+//=> Object {name="curly", age=60}
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/x8Ub7/</div>
+<p>要写一个循环，还要多一些变量，看来是挺复杂的。</p>
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
