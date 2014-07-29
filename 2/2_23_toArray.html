@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.23 - toArray</title>
+</head>
+
+<body>
+<div id="countBy">
+	<h4>2.23 - toArray</h4>
+    <p>语法: _.toArray(list) </p>
+    <p>关键词：<em>转化为数组</em>。</p>
+    <p>将list转化为正真的数组，就像arguments对象一样，看上去是一个数组，实际上他不是数组</p>
+    
+<h6>a) - 把arguments转化为数组</h6>
+<div class="editor" style="height:250px;">
+function a() {
+    console.log(arguments);  
+    //=> [1, 2, 3, 4]
+    console.log(arguments.constructor); //它不是一个数组
+    //=> Object()
+    
+    console.log(_.toArray(arguments)); 
+    //=> [1, 2, 3, 4]
+    console.log(_.toArray(arguments).constructor); //转成数组
+    //=> Array()
+};
+
+a(1, 2, 3, 4);
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/52UYL/</div>
+<p>JavaScript 中每个函数内都能访问一个特别变量 arguments。这个变量维护着所有传递到这个函数中的参数列表。</p>
+<p>arguments 变量不是一个数组（Array）。 尽管在语法上它有数组相关的属性 length，但它不从 Array.prototype 继承，实际上它是一个对象（Object）。</p>
+<p>因此，无法对 arguments 变量使用标准的数组方法，比如 push, pop 或者 slice。 虽然使用 for 循环遍历也是可以的，但是为了更好的使用数组方法，最好把它转化为一个真正的数组。</p>
+<p>_.toArray()值和使用，简单易用。</p>
+
+
+
+<h6>b) - list可以是字符串或对象</h6>
+<div class="editor" style="height:286px;">
+var listStr = '1234567890';
+var listObj = {
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
+    e: 5
+};
+
+console.log(_.sample(listStr, 3));
+//["1", "4", "5"] 
+
+console.log(_.sample(listStr, 3));
+//["8", "6", "1"]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/5LL8V/</div>
+<p>list可是数组、对象和字符串。</p>
+
+
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2.22 - sample</title>
+</head>
+
+<body>
+<div id="countBy">
+	<h4>2.22 - sample</h4>
+    <p>语法: _.sample(list, [n]) </p>
+    <p>关键词：<em>取样</em>。</p>
+    <p>从列表里随便抽样，返回新的结果，n是返回的抽样个数。n可以省略，则返回一个元素。</p>
+    
+<h6>a) - sample示例</h6>
+<div class="editor" style="height:180px;">
+//取样，从列表中随机取出一个值
+var sample1 = _.sample([1, 2, 3, 4, 5, 6]);
+console.log(sample1);
+//=> 2
+
+//取样，从列表中随机取出3个值
+var sample2 = _.sample([1, 2, 3, 4, 5, 6], 3);
+console.log(sample2);
+//=> [1, 6, 4]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/fbxN5/</div>
+<p>返回的结果是每次都是随机的，当n不传的时候，返回的是一个结果，如果n传到大于1的时候，返回的是一个数组。</p>
+
+
+
+<h6>b) - list可以是字符串或对象</h6>
+<div class="editor" style="height:286px;">
+var listStr = '1234567890';
+var listObj = {
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
+    e: 5
+};
+
+console.log(_.sample(listStr, 3));
+//["1", "4", "5"] 
+
+console.log(_.sample(listStr, 3));
+//["8", "6", "1"]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/5LL8V/</div>
+<p>list可是数组、对象和字符串。</p>
+
+
+
+
+
+</div>
+</body>
+</html>
