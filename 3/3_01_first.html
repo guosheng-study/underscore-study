@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>3.1 - first</title>
+</head>
+
+<body>
+
+<div id="first" class="floor-inner">
+	<h4>3.1 - first</h4>
+    <p>语法: _.first(array, [n]) </p>
+    <p>关键词：<em>开头取值</em>。</p>
+    <p>返回列表中的值的数目。</p>
+    
+    <h6>a) - _.first()示例</h6>
+    <div class="editor" style="height:380px;">
+var list = [1, 2, 3, 4];
+
+//返回一个的时候，不是数组。
+var res1 = _.first(list);
+console.log(res1);
+//=> 1
+
+//用原生js写
+var res2 = list.slice(0, 1)[0];
+console.log(res2);
+//=> 1
+
+//返回多个的时候是数组。
+var res3 = _.first(list, 2);
+console.log(res3);
+//=> [1, 2]
+
+//用原生js写
+var res4 = list.slice(0, 2);
+console.log(res4);
+//=> [1, 2]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/a3bYY/</a></div>
+<p>_.first()传一个list，则返回list的第一个元素，返回的结果不是数组，如果第二个参数n也传了，则返回一个数组。</p>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

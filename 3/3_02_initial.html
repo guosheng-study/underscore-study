@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>3.2 - initial</title>
+</head>
+
+<body>
+
+<div id="first" class="floor-inner">
+	<h4>3.2 - initial</h4>
+    <p>语法: _.initial(array, [n]) </p>
+    <p>关键词：<em>开头取值</em>。</p>
+    <p>返回列表里前面的值，默认排除最后一个元素，如果传了n，则排除后面n个元素。</p>
+    
+<h6>a) - _.initial()示例</h6>
+<div class="editor" style="height:310px;">
+var list = [1, 2, 3, 4];
+
+//返回前面的元素，排除最后一个元素
+var res1 = _.initial(list);
+console.log(res1);
+//=> [1, 2, 3]
+
+//使用_.first()方法
+var res2 = _.first(list, -1);
+console.log(res2);
+//=> [1, 2, 3]
+
+//使用原生方法
+var res3 = list.slice(0, -1);
+console.log(res3);
+//=> [1, 2, 3]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/7tx35/</a></div>
+<p>默认排除数组最后一个元素，返回的是一个数组。</p>
+
+<h6>b) - 传入n</h6>
+<div class="editor" style="height:310px;">
+var list = [1, 2, 3, 4];
+
+//返回前面的元素，排除最后2个元素
+var res1 = _.initial(list, 2);
+console.log(res1);
+//=> [1, 2, 3]
+
+//当n大于数组长度时，返回空数组。
+var res2 = _.initial(list, 10);
+console.log(res2);
+//=> []
+
+//仅有一个元素的时候，返回的还是数组
+var res3 = _.initial(list, 3);
+console.log(res3);
+//=> [1]
+
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/BPGm7/</a></div>
+<p>当传入了n,就代表排除后面n个元素，返回的始终是数组。</p>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

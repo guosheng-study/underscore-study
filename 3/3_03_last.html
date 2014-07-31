@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>3.3 - last</title>
+</head>
+
+<body>
+
+<div id="last" class="floor-inner">
+	<h4>3.3 - last</h4>
+    <p>语法: _.last(array, [n]) </p>
+    <p>关键词：<em>末尾取值</em>。</p>
+    <p>返回一个数组的最后一个元素。如果传了n,返回最后n个元素组成的数组。</p>
+    
+<h6>a) - _.last()示例</h6>
+<div class="editor" style="height:210px;">
+var list = [1, 2, 3, 4];
+
+//返回最后一个元素
+var res1 = _.last(list);
+console.log(res1);
+//=> 4
+
+//使用原生方法写
+var res2= list.slice(-1)[0];
+console.log(res2);
+//=> 4
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/kySg4/</a></div>
+<p>不传n的时候，返回的是数组最后一个元素，不是一个数组。</p>
+
+<h6>b) - 传入n</h6>
+<div class="editor" style="height:370px;">
+var list = [1, 2, 3, 4];
+
+//返回前面的元素，排除最后2个元素
+var res1 = _.last(list, 2);
+console.log(res1);
+//=> [3,4]
+
+//当n大于数组长度时，整个数组
+var res2 = _.last(list, 10);
+console.log(res2);
+//=> [1,2,3,4]
+
+//传了n之后，返回一个元素组成的数组。
+var res3 = _.last(list, 1);
+console.log(res3);
+//=> [4]
+
+//不传n，返回的是一个元素，不是数组。
+var res4 = _.last(list);
+console.log(res4);
+//=> 4
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/BPGm7/</a></div>
+<p>当传入了n,返回后面n个元素组成的数组，n传1，返回的也是数组。</p>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

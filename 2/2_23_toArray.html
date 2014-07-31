@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<div id="countBy">
+<div id="toArray">
 	<h4>2.23 - toArray</h4>
     <p>语法: _.toArray(list) </p>
     <p>关键词：<em>转化为数组</em>。</p>
@@ -38,7 +38,7 @@ a(1, 2, 3, 4);
 
 <h6>b) - list可以是字符串或对象</h6>
 <div class="editor" style="height:286px;">
-var listStr = '1234567890';
+var listStr = '123456';
 var listObj = {
     a: 1,
     b: 2,
@@ -47,14 +47,14 @@ var listObj = {
     e: 5
 };
 
-console.log(_.sample(listStr, 3));
-//["1", "4", "5"] 
+console.log(_.toArray(listStr));
+//=> ["1", "2", "3", "4", "5", "6"]
 
-console.log(_.sample(listStr, 3));
-//["8", "6", "1"]
+console.log(_.toArray(listObj));
+//=> [1, 2, 3, 4, 5]
 </div>
-<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/5LL8V/</div>
-<p>list可是数组、对象和字符串。</p>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/2XhGu/</div>
+<p>list可是数组、对象和字符串。当list是对象时，将对象的值转化为数组。</p>
 
 
 

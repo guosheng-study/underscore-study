@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>3.4 - rest</title>
+</head>
+
+<body>
+
+<div id="rest" class="floor-inner">
+	<h4>3.4 - rest</h4>
+    <p>语法: _.rest(array, [n]) </p>
+    <p>关键词：<em>从末尾取值</em>。</p>
+    <p>从末尾取值，默认排除掉数组里的第一个元素，如果传了n，则排除前面n个元素。</p>
+    
+<h6>a) - _.rest()示例</h6>
+<div class="editor" style="height:210px;">
+var list = [1, 2, 3, 4];
+
+//返尾末的元素，排除第一个元素
+var res1 = _.rest(list);
+console.log(res1);
+//=> [2,3,4]
+
+//用原生方法写
+var res2 = list.slice(1);
+console.log(res2);
+//=> [2,3,4]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/A7eQJ/</a></div>
+<p>不传n的时候，默认去除第一个元素，然后返回数组。</p>
+
+<h6>b) - 传入n</h6>
+<div class="editor" style="height:220px;">
+var list = [1, 2, 3, 4];
+
+//返回末尾的元素，排除前面2个元素
+var res1 = _.rest(list, 2);
+console.log(res1);
+//=> [3,4]
+
+//排除前面10个元素，始终返回数组。
+var res2 = _.rest(list, 10);
+console.log(res2);
+//=> []
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/m2Zye/</a></div>
+<p>传了n，则排除前面n个元素。</p>
+
+
+
+<h6>c) - 对比学习</h6>
+<div class="editor" style="height:420px;">
+var list = [1, 2, 3, 4];
+
+var first1 = _.first(list); //从前面取
+var first2 = _.first(list, 1); //从前面取
+var last1 = _.last(list); //从后面取
+var last2 = _.last(list, 1); //从后面取
+
+console.log(first1); //=> 1
+console.log(first2); //=> [1]
+console.log(last1); //=> 4
+console.log(last2); //=> [4]
+//以上两个方法，不传参数返回一个元素，传了参数返回数组
+
+var initial1 = _.initial(list); //排除末尾
+var initial2 = _.initial(list, 3); //排除末尾
+var rest1 = _.rest(list); //排除前面
+var rest2 = _.rest(list, 3); //排除前面
+
+console.log(initial1); //=> [1, 2, 3]
+console.log(initial2); //=> [1]
+console.log(rest1); //=> [2, 3, 4]
+console.log(rest2); //=> [4]
+//以上两个方法，返回的始终是数组。
+
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/Qv8YT/</a></div>
+<p>通过对比总结学习。</p>
+
+
+
+<h6>d) - 操作字符串</h6>
+<div class="editor" style="height:350px;">
+//这四个方法也可以操作字符串
+var list = '123456';
+
+//不可以操作对象，请修改试试吧！
+var list2 = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+
+var first = _.first(list);
+var last = _.last(list);
+var initial = _.initial(list);
+var rest = _.rest(list);
+
+console.log(first); //=> 1
+console.log(last); //=> 6
+console.log(initial); //=> ["1", "2", "3", "4", "5"]
+console.log(rest); //=> ["2", "3", "4", "5", "6"]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/kk5ch/</a></div>
+<p>_.first()、_.last()、_.initial()、_.rest()方法可以操作数组和字符串，但是不能操作对象。 </p>
+
+
+
+</div>
+</body>
+</html>
