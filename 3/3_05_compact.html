@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>3.5 - compact</title>
+</head>
+
+<body>
+
+<div id="compact" class="floor-inner">
+	<h4>3.5 - compact</h4>
+    <p>语法: _.compact(array) </p>
+    <p>关键词：<em>保留真值</em>。</p>
+    <p>保留数组里的真值（可以理解为==true），返回一个新数组。 在javascript里假值有， false, null, 0, "", undefined和NaN。</p>
+    
+<h6>a) - _.compact()示例</h6>
+<div class="editor" style="height:240px;">
+var arr = [0, 1, false, 2, '', 3, undefined, NaN];
+
+//保留真值
+var res1 = _.compact(arr);
+console.log(res1);
+//=> [1, 2, 3]
+
+//用filter来实现他.
+var res2 = _.filter(arr, function (n) {
+    return n && true;
+});
+console.log(res2);
+//=> [1, 2, 3]
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/A7eQJ/</a></div>
+
+
+
+</div>
+</body>
+</html>
