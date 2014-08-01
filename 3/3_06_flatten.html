@@ -8,28 +8,31 @@
 <body>
 
 <div id="flatten" class="floor-inner">
-	<h4>3.6 - flatten</h4>
+	<h4>3.6 - flatten(去除嵌套)</h4>
     <p>语法: _.flatten(array, [shallow])</p>
     <p>关键词：<em>变平、去除嵌套</em>。</p>
     <p>将一个嵌套多层的数组 array (嵌套可以是任何层数)转换为只有一层的数组. 如果传参 shallow 为true, 数组只转换第一层.</p>
     
-<h6>a) - _.compact()示例</h6>
-<div class="editor" style="height:240px;">
-var arr = [0, 1, false, 2, '', 3, undefined, NaN];
+<h6>a) - _.flatten()示例</h6>
+<div class="editor" style="height:290px;">
+var arr = ['123', [
+    [1, 2],
+    [2, 3],
+    [3, 4]
+],
+    ['a', 'b']
+];
 
-//保留真值
-var res1 = _.compact(arr);
+//变成一维数组
+var res1 = _.flatten(arr);
 console.log(res1);
-//=> [1, 2, 3]
 
-//用filter来实现他.
-var res2 = _.filter(arr, function (n) {
-    return n && true;
-});
+//只去掉了一层
+res2 = _.flatten(arr, true);
 console.log(res2);
-//=> [1, 2, 3]
 </div>
-<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/A7eQJ/</a></div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/ZRd3j/1/</a></div>
+<p></p>
 
 
 

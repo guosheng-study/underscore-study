@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>3.7 - without</title>
+</head>
+
+<body>
+
+<div id="without" class="floor-inner">
+	<h4>3.7 - without(排除)</h4>
+    <p>语法: _.without(array, *values)</p>
+    <p>关键词：<em>排除</em>。</p>
+    <p>返回一个除去所有values后的数组</p>
+    
+<h6>a) - _.without()示例</h6>
+<div class="editor" style="height:200px;">
+var arr1 = [1, false, NaN, 0, 3, 1, 4];
+
+//过滤数组里0和1的值。
+var res1 = _.without(arr1, 0, 1);
+console.log(res1);
+
+//参数的个数是不定的。
+var res4 = _.without(arr1, 0, 1, false);
+console.log(res4);
+</div>
+<div class="jsfiddle-link"><a>http://jsfiddle.net/kyo4311/P7X9f/</a></div>
+<p></p>
+
+
+
+</div>
+</body>
+</html>
